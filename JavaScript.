@@ -1,0 +1,39 @@
+import { Button, Text, VStack } from "@chakra-ui/react";
+import { useState } from "react";
+
+const Index = () => {
+  const [message, setMessage] = useState("");
+
+  const generateRandomMessage = () => {
+    const randomNumber = Math.floor(Math.random() * 4) + 1; // Génère un nombre entre 1 et 4
+    let randomMessage;
+    switch (randomNumber) {
+      case 1:
+        randomMessage = "Vous avez tiré le numéro un!";
+        break;
+      case 2:
+        randomMessage = "Le numéro deux est votre choix!";
+        break;
+      case 3:
+        randomMessage = "Trois, c'est le charme!";
+        break;
+      case 4:
+        randomMessage = "Quatre pour la victoire!";
+        break;
+      default:
+        randomMessage = "Quelque chose s'est mal passé!";
+    }
+    setMessage(randomMessage);
+  };
+
+  return (
+    <VStack spacing={4} align="center" justify="center" height="100vh">
+      <Button colorScheme="blue" onClick={generateRandomMessage}>
+        Générer un message aléatoire
+      </Button>
+      <Text fontSize="xl">{message}</Text>
+    </VStack>
+  );
+};
+
+export default Index;
